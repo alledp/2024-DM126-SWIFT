@@ -37,15 +37,21 @@ struct NavigationBar: View {
             Button(action: {
                 showingAlert.toggle()
             }) {Image(systemName:"plus.square.fill")}.font(.title2).foregroundStyle(.gray)}
-                .alert("Entre com um Nome", isPresented: $showingAlert) {
+                .alert("Novo Perfil", isPresented: $showingAlert) {
                     TextField("Entre com um Nome", text: $name_button)
-                    Button("ENTER", action: submit)
-                } message: {Text("Xcode will print whatever you type.")}
+                    Button("Cancel", role: .cancel, action: cancel_func)
+                    Button("Save", action: submit)
+                } message: {Text("Adicione um nome para o seu perfil.")}
     }
     
     func submit() {
-        nameMock.append(name_button)
-        name_button = ""
+        if(!name_button.isEmpty){
+            nameMock.append(name_button)
+            name_button = ""
+        }
+    }
+    func cancel_func() {
+        //Do Nothing, I couldn't find the correct way to do that! This way works
     }
 }
 
