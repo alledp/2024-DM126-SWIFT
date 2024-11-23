@@ -8,17 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private var service = APIService()
+    @State private var APIgoals: [GoalType] = []
+    
     var body: some View {
         VStack{
             NavigationBar()
-            ScrollView{
+            ScrollView(){
                 Features_Grid()
                 CarrosselTabView().frame(height:350)
-                GoalContainer()
+                GoalContainer(goals: APIgoals)
             }
-        }.padding()
+        }.onAppear(){
+            getGoalsAF()
+        }
+    }
+    
+    func getGoalsAF(){
+        service.getGoals{goals, error in
+            if let goals = goals{
+                self.APIgoals = goals
+            }
+        }
     }
 }
+
 
 #Preview {
     ContentView()
