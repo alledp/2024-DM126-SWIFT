@@ -11,6 +11,7 @@ struct ContentView: View {
     
     private var service = APIService()
     @State private var APIgoals: [GoalType] = []
+    @State private var flag_progress: Bool = false
     
     var body: some View {
         VStack{
@@ -18,9 +19,13 @@ struct ContentView: View {
             ScrollView(){
                 Features_Grid()
                 CarrosselTabView().frame(height:350)
-                GoalContainer(goals: APIgoals)
+                if(!flag_progress){
+                    ProgressView().scaleEffect(3).padding().frame(height:100);
+                }else{
+                    GoalContainer(goals: APIgoals).padding()
+                }
             }
-        }.onAppear(){
+        }.padding().onAppear(){
             getGoalsAF()
         }
     }
@@ -29,6 +34,7 @@ struct ContentView: View {
         service.getGoals{goals, error in
             if let goals = goals{
                 self.APIgoals = goals
+                flag_progress = true
             }
         }
     }
@@ -38,14 +44,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
-
-// TODO COLOCAR SCROLL para quando tiver varios na tela.
-// SCROL NAO DEVE AFETAR O NAVIGATION BAR
-// AO CLICAR NO MAIS ADICIONAR MAIS NOMES NESSE DROP DOWN
-// QUANDO CLICAR NO NOME, APARECER UMA LISTA SUSPENSA (DROP DOWN) ou (DROP OUT) COM OUTROS NOMES
-
-
-// PERMITIR A ROLAGEM DO Features Grid, CarrosselTabView e do GoalContainer.
-// Ao Clicar no + Criar uma nova estrutura de dados para salvar nomes de usuários
-// Quando clicar no NOME abre uma lista com esses nomes cadastrados.

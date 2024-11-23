@@ -12,7 +12,7 @@ struct GoalListView: View {
     let goal : GoalType
     
     var body: some View {
-        HStack{
+        HStack(alignment: .top){
             Image(systemName: goal.icone).font(.largeTitle)
             VStack(alignment:.leading){
                 Text(goal.titulo).font(.headline)
@@ -23,5 +23,5 @@ struct GoalListView: View {
 }
 
 #Preview {
-    GoalListView(goal: GoalType(id: 1, icone: "moon.zzz.fill", titulo: "Tempo de Sono", descricao: "Dormir 22h por Noite"))
+    GoalListView(goal: GoalType(id: 1, icone: "cloud", titulo: "Tempo de Sono", descricao: "Dormir 22h por Noite"))
 }

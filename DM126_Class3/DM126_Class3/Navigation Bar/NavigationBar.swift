@@ -39,6 +39,7 @@ struct NavigationBar: View {
             }) {Image(systemName:"plus.square.fill")}.font(.title2).foregroundStyle(.gray)}
                 .alert("Novo Perfil", isPresented: $showingAlert) {
                     TextField("Entre com um Nome", text: $name_button)
+                    //Button("Cancel", role: .cancel, action: cancel_func)
                     Button("Cancel", role: .cancel, action: cancel_func)
                     Button("Save", action: submit)
                 } message: {Text("Adicione um nome para o seu perfil.")}
