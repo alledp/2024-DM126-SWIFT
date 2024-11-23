@@ -6,8 +6,8 @@ This Folder contains some very basic examples showing how to start using switft
 
 ### First Project
 
-This Folder is one App example developed during the 2 class using Toolkit UI
+This Folder is one App example developed during the 2 class using UI Kit
 
-### DM126_Class3
+### DM126_Class3 - This is the Final Project Code
 
-This Folder is another App example developed during the 3 class using Swift UI
+This Folder is another App example developed during the 3 and 4 class using Swift UI
